@@ -4,7 +4,7 @@
 
 Клонируем репозиторий:
 ```bash
-git clone 
+git clone git@github.com:NickOsipov/otus-tests.git
 cd otus-tests
 ```
 
