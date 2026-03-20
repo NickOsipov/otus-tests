@@ -27,7 +27,6 @@ def min_max_normalize(data):
         
     return [(x - min_val) / (max_val - min_val) for x in data]
 
-
 def remove_missing_values(data):
     """
     Удаляет пропущенные значения (None) из списка.

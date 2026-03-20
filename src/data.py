@@ -18,11 +18,11 @@ def load_csv_data(filepath: str, header: bool=True) -> dict:
     -------
     list of list
         Данные из CSV в виде списка списков.
-    list or None
-        Список заголовков, если header=True, иначе None.
+    list
+        Список заголовков, если header=True, иначе пустой список.
     """
     data = []
-    header_data = None
+    header_data = []
     
     with open(filepath, 'r') as file:
         if header:
@@ -48,39 +48,7 @@ def load_csv_data(filepath: str, header: bool=True) -> dict:
     
     return {"header": header_data, "data": data}
 
-
-def split_data(data, split_ratio=0.8):
-    """
-    Разделяет данные на две части в соответствии с указанным соотношением.
-    
-    Parameters
-    ----------
-    data : list
-        Список данных для разделения.
-    split_ratio : float, optional
-        Коэффициент разделения, определяющий размер первой части 
-        (от 0 до 1), по умолчанию 0.8.
-    
-    Returns
-    -------
-    list
-        Первая часть данных (размер = split_ratio * len(data)).
-    list
-        Вторая часть данных (оставшаяся часть).
-    
-    Raises
-    ------
-    ValueError
-        Если split_ratio не в диапазоне (0, 1).
-    """
-    if split_ratio <= 0 or split_ratio >= 1:
-        raise ValueError("split_ratio должен быть в диапазоне (0, 1)")
-    
-    # Определяем точку разделения
-    split_point = int(len(data) * split_ratio)
-    
-    # Разделяем данные
-    first_part = data[:split_point]
-    second_part = data[split_point:]
-    
-    return first_part, second_part
+if __name__ == "__main__":
+    filepath = "test.csv"
+    result = load_csv_data(filepath)
+    print(result)
