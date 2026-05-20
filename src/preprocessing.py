@@ -21,24 +21,16 @@ def min_max_normalize(data):
         
     min_val = min(data)
     max_val = max(data)
+    range_val = max_val - min_val
     
     if min_val == max_val:
         return [0.5] * len(data)  # Особый случай, когда все значения одинаковые
         
-    return [(x - min_val) / (max_val - min_val) for x in data]
+    return [(x - min_val) / range_val for x in data]
 
-def remove_missing_values(data):
-    """
-    Удаляет пропущенные значения (None) из списка.
-    
-    Parameters
-    ----------
-    data : list
-        Список, который может содержать None.
-        
-    Returns
-    -------
-    list
-        Список без None значений.
-    """
-    return [x for x in data if x is not None]
+
+if __name__ == "__main__":
+    # Пример использования функции
+    data = [10, 20, 30, 40, 50]
+    normalized_data = min_max_normalize(data)
+    print(normalized_data)

@@ -2,7 +2,6 @@
 Script: test_data.py
 """
 
-import pytest
 import os
 import tempfile
 
@@ -45,8 +44,8 @@ def test_load_csv_without_header():
         # Загружаем данные без заголовка
         result = load_csv_data(tmp_path, header=False)
         
-        # Проверяем, что заголовок пустой список
-        assert result["header"] == []
+        # Проверяем, что заголовок None
+        assert result["header"] is None
         
         # Проверяем данные
         assert len(result["data"]) == 2
@@ -57,7 +56,6 @@ def test_load_csv_without_header():
         # Удаляем временный файл
         os.unlink(tmp_path)
 
-@pytest.mark.skip(reason="Функционал еще не реализован")
 def test_load_csv_empty_file():
     # Создаем пустой CSV файл
     with tempfile.NamedTemporaryFile(mode='w+', delete=False, suffix='.csv') as tmp:
@@ -68,10 +66,9 @@ def test_load_csv_empty_file():
         result = load_csv_data(tmp_path, header=False)
         
         # Проверяем, что данные пусты
-        assert result["header"] == []
+        assert result["header"] is None
         assert result["data"] == []
         
     finally:
         # Удаляем временный файл
         os.unlink(tmp_path)
-

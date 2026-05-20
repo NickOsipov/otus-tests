@@ -18,11 +18,11 @@ def load_csv_data(filepath: str, header: bool=True) -> dict:
     -------
     list of list
         Данные из CSV в виде списка списков.
-    list
-        Список заголовков, если header=True, иначе пустой список.
+    list or None
+        Список заголовков, если header=True, иначе None.
     """
     data = []
-    header_data = []
+    header_data = None
     
     with open(filepath, 'r') as file:
         if header:
@@ -48,7 +48,8 @@ def load_csv_data(filepath: str, header: bool=True) -> dict:
     
     return {"header": header_data, "data": data}
 
+
 if __name__ == "__main__":
-    filepath = "test.csv"
-    result = load_csv_data(filepath)
+    # Пример использования функции
+    result = load_csv_data('test.csv', header=True)
     print(result)

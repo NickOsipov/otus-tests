@@ -1,5 +1,5 @@
 """
-Script: test_load_csv.py
+Script: test_data_fixture.py
 """
 
 import pytest
@@ -30,3 +30,4 @@ def test_load_csv(temp_csv_file):
     assert result["header"] == ["name", "age", "score"]
     assert len(result["data"]) == 2
     assert result["data"][0] == ["Alice", 25, 95.5]
+    assert result["data"][1] == ["Bob", 30, 85]
